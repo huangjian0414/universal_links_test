@@ -1,0 +1,14 @@
+ {
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "35G69KYLAM.com.girafit.cloud",
+                "paths": [ "*" ]
+            }
+        ]
+    },
+    "webcredentials" : {
+        "apps" : ["35G69KYLAM.com.girafit.cloud"]
+    }
+}

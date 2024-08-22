@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.girafit.cloud",
+      "sha256_cert_fingerprints": [
+        "14:3A:2A:97:F3:E5:CF:C0:BF:99:59:E0:CE:F5:33:3F:72:17:22:9F:05:53:0D:12:10:4A:17:69:D4:04:C4:C8"
+      ]
+    }
+  }
+]
