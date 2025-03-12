@@ -63,6 +63,9 @@
 </head>
 <body>
     <div class="container">
+        <h2>Device Information</h2>
+        <p id="ua"></p>
+        <p id="platform"></p>
         <h1>Personal Test</h1>
         <p>This is a simple test to evaluate your preferences and personality. Please select the option that best describes you.</p>
 
@@ -130,7 +133,10 @@
         document.getElementsByTagName("html")[0].style.cssText = 'font-size: ' + fz * (fz / realfz) +"px";
     }
 }
-
+        const ua = navigator.userAgent; 
+        const platform = navigator.platform; 
+        document.getElementById('ua').textContent = `User-Agent: ${ua}`;
+        document.getElementById('platform').textContent = `Platform: ${platform}`;
     </script>
 </body>
 </html>
