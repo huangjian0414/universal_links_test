@@ -144,24 +144,31 @@
         document.getElementById('platform').textContent = `Platform: ${platform}`;
         document.getElementById('other_info').textContent = `OtherInfo: ${other_info}`;
         
-    function getDeviceTypeAdvanced() {
+    function getDeviceType() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
     var platform = navigator.platform;
 
     // 判断 iOS
-    if (/iPhone|iPad|iPod/.test(platform)) {
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return 'iOS';
+    }
+
+    // 在 iOS 中，如果平台是 'MacIntel'，需要进一步判断是否是 iPad（某些 iPad 使用了 Mac 的平台名称）
+    if (/MacIntel/.test(platform) && 'ontouchend' in document) {
         return 'iOS';
     }
 
     // 判断 Android
-    if (/Android/.test(platform)) {
+    if (/android/i.test(userAgent)) {
         return 'Android';
     }
 
+    // 其他情况返回 Unknown
     return 'Unknown';
 }
  
     function openApp() {
-        var type = getDeviceTypeAdvanced();
+        var type = getDeviceType();
         console.log(type);
         var url = '';
         var store_url = '';
