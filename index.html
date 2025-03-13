@@ -28,6 +28,11 @@
         <p id="platform">Platform:</p>
         <p id="other_info">OtherInfo:</p>
 
+
+        <input id="token" type="text" placeholder="token">
+        <input id="user_name" type="text" placeholder="username">
+        <br>
+        <br>
         <button onclick="openiOSApp()">打开iOS应用</button>
         <button onclick="openAndroidApp()">打开安卓应用</button>
 
@@ -45,33 +50,52 @@
         
  
         function openAndroidApp() {
-        
-        var url = 'cloud://com.foxcorp.foxcloud/message?token=123456&userName=987654';
-        var store_url = 'https://play.google.com/store/apps/details?id=com.foxcorp.foxcloud';
-        var timeout = setTimeout(function() {
-            window.location.href = store_url; 
-        }, 2000);  
 
-        window.location.href = url;
+            var token = document.getElementById("token").value;
+            var user_name = document.getElementById("user_name").value;
+            if (token.trim() === "") {
+                token = "test1234"
+            }
+            if (user_name.trim() === "") {
+                user_name = "test9876"
+            }
+            
+            var url = `cloud://com.foxcorp.foxcloud/message?token=${token}&userName=${user_name}`;
+            var store_url = 'https://play.google.com/store/apps/details?id=com.foxcorp.foxcloud';
+            var timeout = setTimeout(function() {
+                window.location.href = store_url; 
+            }, 2000);  
 
-        window.onblur = function() {
-            clearTimeout(timeout);
-        };
+            window.location.href = url;
+
+            window.onblur = function() {
+                clearTimeout(timeout);
+            };
         }
 
         function openiOSApp() {
-        var url = 'cloudcom.x2cloud.foxcloud://com.x2cloud.foxcloud/message?token=123456&userName=987654';
-        var store_url = 'https://itunes.apple.com/app/id6714471433';
 
-        var timeout = setTimeout(function() {
-            window.location.href = store_url;  
-        }, 2000);  
+            var token = document.getElementById("token").value;
+            var user_name = document.getElementById("user_name").value;
+            if (token.trim() === "") {
+                token = "test1234"
+            }
+            if (user_name.trim() === "") {
+                user_name = "test9876"
+            }
+        
+            var url = `cloudcom.x2cloud.foxcloud://com.x2cloud.foxcloud/message?token=${token}&userName=${user_name}`;
+            var store_url = 'https://itunes.apple.com/app/id6714471433';
 
-        window.location.href = url;
+            var timeout = setTimeout(function() {
+                window.location.href = store_url;  
+            }, 2000);  
 
-        window.onblur = function() {
-            clearTimeout(timeout);
-        };
+            window.location.href = url;
+
+            window.onblur = function() {
+                clearTimeout(timeout);
+            };
         }
 
 
