@@ -66,6 +66,10 @@
         <h2>Device Information</h2>
         <p id="ua"></p>
         <p id="platform"></p>
+        <p id="other_info"></p>
+
+        <button onclick="openApp()">打开应用</button>
+
         <h1>Personal Test</h1>
         <p>This is a simple test to evaluate your preferences and personality. Please select the option that best describes you.</p>
 
@@ -135,8 +139,52 @@
 }
         const ua = navigator.userAgent; 
         const platform = navigator.platform; 
+        const other_info = 'window.android:' + window.android + '\nwindow.webkit:' + window.webkit + '\nwindow.navigator.standalone:' + window.navigator.standalone + '\ndocument.location:' + document.location;
         document.getElementById('ua').textContent = `User-Agent: ${ua}`;
         document.getElementById('platform').textContent = `Platform: ${platform}`;
+        document.getElementById('other_info').textContent = `OtherInfo: ${other_info}`;
+        
+    function getDeviceTypeAdvanced() {
+    var platform = navigator.platform;
+
+    // 判断 iOS
+    if (/iPhone|iPad|iPod/.test(platform)) {
+        return 'iOS';
+    }
+
+    // 判断 Android
+    if (/Android/.test(platform)) {
+        return 'Android';
+    }
+
+    return 'Unknown';
+}
+ 
+    function openApp() {
+        var type = getDeviceTypeAdvanced();
+        console.log(type);
+        var url = '';
+        var store_url = '';
+        if (type == 'iOS') {
+            url = 'cloudcom.x2cloud.foxcloud://com.x2cloud.foxcloud/message?token=123456&userName=987654'
+            store_url = 'https://itunes.apple.com/app/id6714471433';
+        }else if(type == 'Android'){
+            url = 'cloud://com.foxcorp.foxcloud/message?token=123456&userName=987654'
+            store_url = 'https://play.google.com/store/apps/details?id=com.foxcorp.foxcloud';
+        }
+
+            var timeout = setTimeout(function() {
+                window.location = store_url;  
+            }, 2000);  
+
+            window.location = url;
+
+            window.onblur = function() {
+                clearTimeout(timeout);
+            };
+    }
+
+
     </script>
 </body>
 </html>
