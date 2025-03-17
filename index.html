@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -11,6 +12,7 @@
             margin: 0;
             padding: 20px;
         }
+
         .container {
             max-width: 600px;
             margin: auto;
@@ -21,6 +23,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Device Information</h2>
@@ -33,23 +36,26 @@
         <input id="user_name" type="text" placeholder="username">
         <br>
         <br>
-        <button onclick="openiOSApp()">打开iOS应用</button>
-        <button onclick="openAndroidApp()">打开安卓应用</button>
-
+        <button onclick="openiOSMyNexCloudApp()">打开iOS-MyNexCloud应用</button>
+        <button onclick="openAndroidMyNexCloudApp()">打开Android-MyNexCloud应用</button>
+        <br>
+        <br>
+        <button onclick="openiOSLumiCloudApp()">打开iOS-LumiCloud应用</button>
+        <button onclick="openAndroidLumiCloudApp()">打开Android-LumiCloud应用</button>
 
     </div>
     <script>
-        
-        const ua = navigator.userAgent; 
-        const platform = navigator.platform; 
+
+        const ua = navigator.userAgent;
+        const platform = navigator.platform;
 
         const other_info = `window.android: ${window.android} \n window.webkit: ${window.webkit} \n window.navigator.standalone: ${window.navigator.standalone} \n document.location: ${document.location}`;
         document.getElementById('ua').textContent = `User-Agent: ${ua}`;
         document.getElementById('platform').textContent = `Platform: ${platform}`;
         document.getElementById('other_info').textContent = `OtherInfo: ${other_info}`;
-        
- 
-        function openAndroidApp() {
+
+
+        function openAndroidMyNexCloudApp() {
 
             var token = document.getElementById("token").value;
             var user_name = document.getElementById("user_name").value;
@@ -59,21 +65,21 @@
             if (user_name.trim() === "") {
                 user_name = "test9876"
             }
-            
+
             var url = `cloud://com.foxcorp.foxcloud/message?token=${token}&userName=${user_name}`;
             var store_url = 'https://play.google.com/store/apps/details?id=com.foxcorp.foxcloud';
-            var timeout = setTimeout(function() {
-                window.location.href = store_url; 
-            }, 2000);  
+            var timeout = setTimeout(function () {
+                window.location.href = store_url;
+            }, 2000);
 
             window.location.href = url;
 
-            window.onblur = function() {
+            window.onblur = function () {
                 clearTimeout(timeout);
             };
         }
 
-        function openiOSApp() {
+        function openiOSMyNexCloudApp() {
 
             var token = document.getElementById("token").value;
             var user_name = document.getElementById("user_name").value;
@@ -83,22 +89,71 @@
             if (user_name.trim() === "") {
                 user_name = "test9876"
             }
-        
+
             var url = `cloudcom.x2cloud.foxcloud://com.x2cloud.foxcloud/message?token=${token}&userName=${user_name}`;
             var store_url = 'https://itunes.apple.com/app/id6714471433';
 
-            var timeout = setTimeout(function() {
-                window.location.href = store_url;  
-            }, 2000);  
+            var timeout = setTimeout(function () {
+                window.location.href = store_url;
+            }, 2000);
 
             window.location.href = url;
 
-            window.onblur = function() {
+            window.onblur = function () {
                 clearTimeout(timeout);
             };
         }
 
+        function openAndroidLumiCloudApp() {
+
+            var token = document.getElementById("token").value;
+            var user_name = document.getElementById("user_name").value;
+            if (token.trim() === "") {
+                token = "test1234"
+            }
+            if (user_name.trim() === "") {
+                user_name = "test9876"
+            }
+
+            var url = `cloud://com.luminyscorp.lumicloud/message?token=${token}&userName=${user_name}`;
+            var store_url = 'https://play.google.com/store/apps/details?id=com.luminyscorp.lumicloud';
+            var timeout = setTimeout(function () {
+                window.location.href = store_url;
+            }, 2000);
+
+            window.location.href = url;
+
+            window.onblur = function () {
+                clearTimeout(timeout);
+            };
+        }
+
+        function openiOSLumiCloudApp() {
+
+            var token = document.getElementById("token").value;
+            var user_name = document.getElementById("user_name").value;
+            if (token.trim() === "") {
+                token = "test1234"
+            }
+            if (user_name.trim() === "") {
+                user_name = "test9876"
+            }
+
+            var url = `cloudcom.luminys.lumicloud://com.luminys.lumicloud/message?token=${token}&userName=${user_name}`;
+            var store_url = 'https://itunes.apple.com/app/id6714471391';
+
+            var timeout = setTimeout(function () {
+                window.location.href = store_url;
+            }, 2000);
+
+            window.location.href = url;
+
+            window.onblur = function () {
+                clearTimeout(timeout);
+            };
+        }
 
     </script>
 </body>
+
 </html>
