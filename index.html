@@ -75,6 +75,7 @@
             window.location.href = url;
 
             window.onblur = function () {
+                console.log("窗口失去焦点了！");
                 clearTimeout(timeout);
             };
         }
@@ -97,9 +98,16 @@
                 window.location.href = store_url;
             }, 2000);
 
-            window.location.href = url;
+            try {
+                window.location.href = url;
+                console.log("跳转到页面成功");
+            } catch (e) {
+                console.log("跳转失败", e);
+            }
+
 
             window.onblur = function () {
+                console.log("窗口失去焦点了！");
                 clearTimeout(timeout);
             };
         }
@@ -124,6 +132,7 @@
             window.location.href = url;
 
             window.onblur = function () {
+                console.log("窗口失去焦点了！");
                 clearTimeout(timeout);
             };
         }
@@ -149,6 +158,7 @@
             window.location.href = url;
 
             window.onblur = function () {
+                console.log("窗口失去焦点了！");
                 clearTimeout(timeout);
             };
         }
